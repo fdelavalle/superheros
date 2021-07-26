@@ -1,11 +1,22 @@
 import React from 'react';
 import LoginForm from '../components/login/LoginForm';
+import LoginText from '../components/login/LoginText';
+import './Login.css';
 
 const Login = () => {
   return (
-    <div>
-      <LoginForm />
-    </div>
+    <section className='welcome'>
+      <div className='container h-50'>
+        <div className='row'>
+          <div className='col-5'>
+            <LoginForm />
+          </div>
+          <div className='col-7'>
+            <LoginText />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
