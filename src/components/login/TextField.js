@@ -1,5 +1,6 @@
 import React from 'react';
 import { ErrorMessage, useField } from 'formik';
+import './TextField.css';
 
 const TextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -16,7 +17,6 @@ const TextField = ({ label, ...props }) => {
         {label}
       </label>
       <input
-        type='text'
         className={`form-control shadow-none ${
           meta.touched && meta.error && 'is-invalid'
         }`}
@@ -24,7 +24,7 @@ const TextField = ({ label, ...props }) => {
         {...field}
         {...props}
       />
-      <ErrorMessage component='div' className={errorStyles} name={field.name} />
+      <ErrorMessage component='div' className='error' name={field.name} />
     </div>
   );
 };
