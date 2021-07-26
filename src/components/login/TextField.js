@@ -5,12 +5,6 @@ import './TextField.css';
 const TextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
-  const errorStyles = {
-    color: 'red',
-    position: 'absolute',
-    fontSize: '0.8rem',
-  };
-
   return (
     <div className='mt-4 mb-4'>
       <label className='text-primary' htmlFor={field.name}>

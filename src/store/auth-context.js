@@ -13,7 +13,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(initialToken);
 
   //Verificar si existe token
-  const userIsLoggedIn = !!token;
+  let userIsLoggedIn = !!token;
 
   const logoutHandler = () => {
     setToken(null);
@@ -33,7 +33,7 @@ export const AuthContextProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider values={contextValue}>
+    <AuthContext.Provider value={contextValue}>
       {props.children}
     </AuthContext.Provider>
   );
