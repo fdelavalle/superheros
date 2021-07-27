@@ -1,13 +1,26 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080/login';
+const baseUrl = 'http://challenge-react.alkemy.org/';
 
 export const loginUser = async ({ email, password }) => {
-  const response = await axios.post(baseUrl, {
-    body: {
-      email: email,
-      password: password,
-    },
-  });
-  return response.data.token;
+  try {
+    const response = await axios({
+      url: baseUrl,
+      method: 'POST',
+      data: {
+        email: email,
+        password: password,
+      },
+    });
+    return response.data.token;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const checkTokenValidity = (token) => {
+  if (token instanceof Error) {
+    return false;
+  }
+  return true;
 };
