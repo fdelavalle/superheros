@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Home from './components/Home';
 import './App.css';
 import AuthContext from './store/auth-context';
+import Layout from './components/layout/Layout';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -13,11 +14,15 @@ function App() {
       <Route exact path='/'>
         <Login />
       </Route>
+
       {authCtx.isLoggedIn && (
         <Route path='/home'>
-          <Home />
+          <Layout>
+            <Home />
+          </Layout>
         </Route>
       )}
+
       <Route path='*'>
         <Redirect to='/' />
       </Route>

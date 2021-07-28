@@ -51,7 +51,7 @@ const LoginForm = () => {
             )}
 
             {isLoading && (
-              <div class='text-center'>
+              <div className='text-center'>
                 <div
                   className='spinner-border text-primary'
                   role='status'
