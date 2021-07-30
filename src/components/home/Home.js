@@ -15,7 +15,7 @@ const Home = () => {
       className='d-flex mt-5 justify-content-center'
     >
       <div
-        class='d-flex flex-column align-items-center alert alert-primary w-50 h-50 p-3'
+        className='d-flex flex-column align-items-center alert alert-primary w-50 h-50 p-3'
         role='alert'
       >
         {content}

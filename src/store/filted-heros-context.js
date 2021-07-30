@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from 'react';
-import heros from '../services/heros';
+import axios from '../services/axios';
 
 const FilteredHerosContext = React.createContext({
   herosList: [],
   updateHeros: (name) => {},
 });
 
-export const FilteredHerosProvider = (props) => {
+export const FilteredHerosContextProvider = (props) => {
   const [fetchedHeroes, setFetchedHeroes] = useState([]);
 
   const addHeroHandler = async (name) => {
-    const response = await heros.get(name);
+    const response = await axios.get(name);
     const responseData = await response.data.results;
     setFetchedHeroes(responseData);
   };

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import FilteredHerosContext from '../../store/filted-heros-context';
 
 const Input = (props) => {
-  const { updateHeros, herosList } = useContext(FilteredHerosContext);
+  const { updateHeros } = useContext(FilteredHerosContext);
   const [enteredSuperhero, setEnteredSuperhero] = useState('');
 
   useEffect(() => {
@@ -30,10 +30,8 @@ const Input = (props) => {
     setEnteredSuperhero(event.target.value);
   };
 
-  console.log(herosList);
-
   return (
-    <>
+    <React.Fragment>
       <form>
         <label htmlFor='superhero'>Superhero</label>
         <input
@@ -44,7 +42,7 @@ const Input = (props) => {
           value={enteredSuperhero}
         />
       </form>
-    </>
+    </React.Fragment>
   );
 };
 
