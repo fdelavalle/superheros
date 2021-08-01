@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
-import Home from './components/home/Home';
+import Home from './pages/Home';
 import Results from './components/search/Results';
 import './App.css';
 import AuthContext from './store/auth-context';

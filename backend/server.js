@@ -16,7 +16,7 @@ app.get('/getHeros', cors(corsOptions), async (req, res) => {
     const response = await axios.get(
       `https://superheroapi.com/api/4311045615613550/search/${heroName}`
     );
-    res.send(response);
+    res.send(response.data);
   } catch (error) {
     res.send(error.message);
   }

@@ -1,7 +1,7 @@
 import React from 'react';
-import TeamGrid from './TeamGrid';
-import Input from '../search/Input';
-import TeamStats from './TeamStats';
+import TeamGrid from '../components/home/TeamGrid';
+import Input from '../components/search/Input';
+import TeamStats from '../components/home/TeamStats';
 
 const Home = () => {
   const superherosList = [1];

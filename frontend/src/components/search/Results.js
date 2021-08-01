@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Card from '../card/Card';
 
 const Search = () => {
   const [herosList, setHerosList] = useState([]);
@@ -31,11 +32,7 @@ const Search = () => {
         {Boolean(herosList.length > 0) && (
           <ul>
             {herosList.map((hero) => {
-              return (
-                <li key={hero.id}>
-                  <p>{hero.name}</p>
-                </li>
-              );
+              return <Card hero={hero} key={hero.id} />;
             })}
           </ul>
         )}
