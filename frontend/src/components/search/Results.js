@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import Card from '../card/Card';
+import CardGrid from '../card/CardGrid';
 
 const Search = () => {
   const [herosList, setHerosList] = useState([]);
@@ -27,14 +27,10 @@ const Search = () => {
 
   return (
     <section>
-      <div className='container'>
+      <div className='container mt-5 pb-5'>
         {isLoading && <h1>LOADING ...</h1>}
-        {Boolean(herosList.length > 0) && (
-          <ul>
-            {herosList.map((hero) => {
-              return <Card hero={hero} key={hero.id} />;
-            })}
-          </ul>
+        {Boolean(herosList.length > 0) && !isLoading && (
+          <CardGrid herosList={herosList} />
         )}
       </div>
     </section>
