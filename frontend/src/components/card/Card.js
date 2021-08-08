@@ -12,6 +12,7 @@ const Card = ({ hero }) => {
       {isModalOpen} ?{' '}
       <HeroModal
         imageUrl={image.url}
+        heroName={name}
         show={isModalOpen}
         setShow={setIsModalOpen}
       />{' '}
