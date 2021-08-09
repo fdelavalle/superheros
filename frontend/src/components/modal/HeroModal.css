@@ -1,3 +1,31 @@
-.modal-90w {
-  max-width: 75% !important;
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.h-80 {
+  height: 80%;
+}
+
+.flex-container .hero-info {
+  width: 50vw;
+}
+
+.flex-container .hero-image {
+  width: 50vw;
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .flex-container .hero-info {
+    margin-top: 2rem;
+  }
+
+  .flex-container .hero-image {
+    width: 80vw;
+  }
 }

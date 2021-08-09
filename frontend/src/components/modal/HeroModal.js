@@ -1,25 +1,38 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
+
 import './HeroModal.css';
 
 const HeroModal = (props) => {
   const handleClose = () => props.setShow(false);
 
   return (
-    <Modal show={props.show} onHide={handleClose} dialogClassName='modal-90w'>
+    <Modal
+      show={props.show}
+      onHide={handleClose}
+      size='xl'
+      dialogClassName='h-80'
+    >
       <Modal.Header closeButton>
         <Modal.Title>{props.heroName}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className='container'>
-          <div className='row'>
-            <div className='col-6'>
-              <img alt='hero asdas' src={props.imageUrl}></img>
+          <div className='row flex-container'>
+            <div className='col-6 hero-image'>
+              <img
+                className='img-fluid'
+                alt='hero asdas'
+                src={props.imageUrl}
+              ></img>
             </div>
-            <div className='col-6'>
+            <div className='col-6 hero-info'>
               <h3>asdsa</h3>
               <ul>
-                <li>asd</li>
+                <li>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Vero, corrupti.
+                </li>
                 <li>asd</li>
                 <li>asd</li>
                 <li>asd</li>
