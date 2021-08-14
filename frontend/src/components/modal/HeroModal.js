@@ -19,14 +19,14 @@ const HeroModal = (props) => {
       <Modal.Body>
         <div className='container'>
           <div className='row flex-container'>
-            <div className='col-6 hero-image'>
+            <div className='hero-image'>
               <img
                 className='img-fluid'
                 alt='hero asdas'
                 src={props.imageUrl}
               ></img>
             </div>
-            <div className='col-6 hero-info'>
+            <div className='hero-info'>
               <h3>asdsa</h3>
               <ul>
                 <li>
