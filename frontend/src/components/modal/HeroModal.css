@@ -16,6 +16,12 @@
   height: 35rem;
 }
 
+@media (min-width: 992px) {
+  .flex-container .hero-info ul li {
+    margin-top: 15px;
+  }
+}
+
 @media (max-width: 992px) {
   .flex-container {
     flex-direction: column;
@@ -31,6 +37,10 @@
 
   .flex-container .hero-info {
     margin-top: 2rem;
+  }
+
+  .flex-container .hero-info ul li {
+    margin-top: 5px;
   }
 }
 

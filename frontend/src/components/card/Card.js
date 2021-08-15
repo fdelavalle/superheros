@@ -3,16 +3,15 @@ import HeroModal from '../modal/HeroModal';
 
 import './Card.css';
 
-const Card = ({ hero }) => {
-  const { image, name } = hero;
+const Card = (props) => {
+  const { image, name } = props.hero;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <React.Fragment>
       {isModalOpen} ?{' '}
       <HeroModal
-        imageUrl={image.url}
-        heroName={name}
+        hero={props.hero}
         show={isModalOpen}
         setShow={setIsModalOpen}
       />{' '}
