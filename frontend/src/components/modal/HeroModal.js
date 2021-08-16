@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import TeamMembersContext from '../../store/teamMembers-context';
 
 import './HeroModal.css';
 
 const HeroModal = (props) => {
   const handleClose = () => props.setShow(false);
+  const { addHero, removeHero } = useContext(TeamMembersContext);
 
   const { height, weight } = props.hero.appearance;
   const fullName = props.hero.biography['full-name'];
@@ -18,6 +20,25 @@ const HeroModal = (props) => {
 
   const heightCm = height[1];
   const weightKg = weight[1];
+
+  let buttonClasses;
+  let buttonText;
+  let functionality;
+
+  if (props.inHome) {
+    buttonClasses = 'btn btn-danger';
+    buttonText = 'Delete Hero';
+    functionality = removeHero;
+  } else {
+    buttonClasses = 'btn btn-success';
+    buttonText = 'Add Hero';
+    functionality = addHero;
+  }
+
+  const updateTeamHandler = () => {
+    functionality(props.hero);
+    handleClose();
+  };
 
   return (
     <Modal
@@ -55,11 +76,11 @@ const HeroModal = (props) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <button className='btn btn-danger' onClick={handleClose}>
+        <button className='btn btn-outline-danger' onClick={handleClose}>
           Close
         </button>
-        <button className='btn btn-success' onClick={handleClose}>
-          Add Hero
+        <button onClick={updateTeamHandler} className={buttonClasses}>
+          {buttonText}
         </button>
       </Modal.Footer>
     </Modal>

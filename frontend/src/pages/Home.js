@@ -1,17 +1,11 @@
-import React from 'react';
-import TeamGrid from '../components/home/TeamGrid';
+import React, { useContext } from 'react';
 import Input from '../components/search/Input';
 import TeamStats from '../components/home/TeamStats';
+import CardGrid from '../components/card/CardGrid';
+import TeamMembersContext from '../store/teamMembers-context';
 
 const Home = () => {
-  const superherosList = [1];
-
-  let content =
-    superherosList.length > 0 ? (
-      <TeamGrid />
-    ) : (
-      <p> You don't have any heros in your team yet</p>
-    );
+  const { heros } = useContext(TeamMembersContext);
 
   return (
     <section>
@@ -26,6 +20,13 @@ const Home = () => {
           </div>
           <div className='col-6'>
             <TeamStats />
+          </div>
+          <div>
+            {heros.length > 0 ? (
+              <CardGrid inHome={true} herosList={heros} />
+            ) : (
+              <p className='mt-5'>You don't have any heros in your team yet</p>
+            )}
           </div>
         </div>
       </div>

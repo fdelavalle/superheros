@@ -25,7 +25,7 @@ export const AuthContextProvider = (props) => {
     localStorage.setItem('userToken', token);
   };
 
-  const contextValue = {
+  const authContextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
@@ -33,7 +33,7 @@ export const AuthContextProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider value={contextValue}>
+    <AuthContext.Provider value={authContextValue}>
       {props.children}
     </AuthContext.Provider>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import TeamMembersContext from '../../store/teamMembers-context';
 import HeroModal from '../modal/HeroModal';
 
 import './Card.css';
@@ -6,16 +7,40 @@ import './Card.css';
 const Card = (props) => {
   const { image, name } = props.hero;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { addHero, removeHero } = useContext(TeamMembersContext);
+
+  let buttonClasses;
+  let buttonText;
+  let functionality;
+
+  if (props.inHome) {
+    buttonClasses = 'btn btn-danger';
+    buttonText = 'Delete Hero';
+    functionality = removeHero;
+  } else {
+    buttonClasses = 'btn btn-success';
+    buttonText = 'Add Hero';
+    functionality = addHero;
+  }
+
+  const openModalHandler = () => {
+    setIsModalOpen(true);
+  };
+
+  const updateTeamHandler = () => {
+    functionality(props.hero);
+  };
 
   return (
     <React.Fragment>
-      {isModalOpen} ?{' '}
-      <HeroModal
-        hero={props.hero}
-        show={isModalOpen}
-        setShow={setIsModalOpen}
-      />{' '}
-      (
+      {isModalOpen && (
+        <HeroModal
+          inHome={props.inHome}
+          hero={props.hero}
+          show={isModalOpen}
+          setShow={setIsModalOpen}
+        />
+      )}
       <div className='card bg-dark text-white mt-2 h-500'>
         <img
           loading='lazy'
@@ -30,13 +55,15 @@ const Card = (props) => {
           </div>
 
           <div className='d-flex justify-content-around mb-5'>
-            <button type='button' className='btn btn-success'>
-              Add Hero
+            <button
+              onClick={updateTeamHandler}
+              type='button'
+              className={buttonClasses}
+            >
+              {buttonText}
             </button>
             <button
-              onClick={() => {
-                setIsModalOpen(true);
-              }}
+              onClick={openModalHandler}
               type='button'
               className='btn btn-primary'
             >
@@ -45,7 +72,6 @@ const Card = (props) => {
           </div>
         </div>
       </div>
-      )
     </React.Fragment>
   );
 };

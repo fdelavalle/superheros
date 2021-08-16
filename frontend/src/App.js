@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Results from './components/search/Results';
 import './App.css';
 import AuthContext from './store/auth-context';
-
+import { TeamMembersContextProvider } from './store/teamMembers-context';
 import Layout from './components/layout/Layout';
 
 function App() {
@@ -19,16 +19,18 @@ function App() {
 
       {authCtx.isLoggedIn && (
         <React.Fragment>
-          <Route path='/home'>
-            <Layout>
-              <Home />
-            </Layout>
-          </Route>
-          <Route path='/search'>
-            <Layout>
-              <Results />
-            </Layout>
-          </Route>
+          <TeamMembersContextProvider>
+            <Route path='/home'>
+              <Layout>
+                <Home />
+              </Layout>
+            </Route>
+            <Route path='/search'>
+              <Layout>
+                <Results />
+              </Layout>
+            </Route>
+          </TeamMembersContextProvider>
         </React.Fragment>
       )}
 
