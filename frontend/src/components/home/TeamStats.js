@@ -7,6 +7,7 @@ const TeamStats = () => {
       <p>as</p>
       <p>as</p>
       <p>as</p>
+      <p>as</p>
     </div>
   );
 };

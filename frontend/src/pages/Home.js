@@ -21,7 +21,7 @@ const Home = () => {
           <div className='col-6'>
             <TeamStats />
           </div>
-          <div>
+          <div className='mt-3'>
             {heros.length > 0 ? (
               <CardGrid inHome={true} herosList={heros} />
             ) : (
