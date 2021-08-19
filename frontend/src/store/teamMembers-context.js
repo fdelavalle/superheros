@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
-import { isHeroInTeam, checkTeamOrientation } from '../helpers/team-validity';
+import React, { useState, useEffect } from 'react';
+import {
+  isHeroInTeam,
+  checkBadHerosInTeam,
+  checkGoodHerosInTeam,
+} from '../helpers/team-validity';
 
 const TeamMembersContext = React.createContext({
   heros: [],
@@ -14,27 +18,35 @@ export const TeamMembersContextProvider = (props) => {
   const [teamFullOfGoodHeros, setTeamFullOfGoodHeros] = useState(false);
   const [teamFullOfBadHeros, setTeamFullOfBadHeros] = useState(false);
 
-  console.log('OgoodO', goodHerosCounter);
-  console.log('ObadO', badHerosCounter);
+  useEffect(() => {
+    if (goodHerosCounter === 3) {
+      setTeamFullOfGoodHeros(true);
+    }
+    if (badHerosCounter === 3) {
+      setTeamFullOfBadHeros(true);
+    }
+  }, [goodHerosCounter, badHerosCounter]);
 
   const addHeroToTeamHandler = (hero) => {
+    if (hero.biography.alignment === 'good' && teamFullOfGoodHeros) {
+      return;
+    }
+
+    if (hero.biography.alignment === 'bad' && teamFullOfBadHeros) {
+      return;
+    }
     if (isHeroInTeam(hero, heros)) return;
-    if (checkTeamOrientation(goodHerosCounter, badHerosCounter) === 1)
-      setTeamFullOfGoodHeros(true);
-    if (checkTeamOrientation(goodHerosCounter, badHerosCounter) === 2)
-      setTeamFullOfBadHeros(true);
+
     setHeros((prevHeros) => {
-      if (hero.biography.alignment === 'good' && !teamFullOfGoodHeros) {
+      if (hero.biography.alignment === 'good') {
         setGoodHerosCounter((prevCount) => prevCount + 1);
-        console.log('good', goodHerosCounter);
-      } else {
-        if (!teamFullOfBadHeros)
-          setBadHerosCounter((prevCount) => prevCount + 1);
-        console.log('bad', badHerosCounter);
       }
+      if (hero.biography.alignment === 'bad') {
+        setBadHerosCounter((prevCount) => prevCount + 1);
+      }
+
       const updatedHeros = [...prevHeros];
       updatedHeros.push(hero);
-
       return updatedHeros;
     });
   };
