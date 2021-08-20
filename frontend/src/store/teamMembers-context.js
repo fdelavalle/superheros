@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { isHeroInTeam } from '../helpers/team-validity';
+import { isHeroInTeam, getTeamSummary } from '../helpers/general-helpers';
 
 const TeamMembersContext = React.createContext({
   heros: [],
   addHero: (hero) => {},
   removeHero: (id) => {},
+  teamSummary: [],
 });
 
 export const TeamMembersContextProvider = (props) => {
@@ -13,8 +14,10 @@ export const TeamMembersContextProvider = (props) => {
   const [badHerosCounter, setBadHerosCounter] = useState(0);
   const [teamFullOfGoodHeros, setTeamFullOfGoodHeros] = useState(false);
   const [teamFullOfBadHeros, setTeamFullOfBadHeros] = useState(false);
+  const [teamSummary, setTeamSummary] = useState({});
 
   useEffect(() => {
+    setTeamSummary(getTeamSummary(heros));
     if (goodHerosCounter === 3) {
       setTeamFullOfGoodHeros(true);
     } else {
@@ -29,7 +32,7 @@ export const TeamMembersContextProvider = (props) => {
         setTeamFullOfBadHeros(false);
       }
     }
-  }, [goodHerosCounter, badHerosCounter]);
+  }, [goodHerosCounter, badHerosCounter, heros]);
 
   const addHeroToTeamHandler = (hero) => {
     if (hero.biography.alignment === 'good' && teamFullOfGoodHeros) {
@@ -75,6 +78,7 @@ export const TeamMembersContextProvider = (props) => {
     heros: heros,
     addHero: addHeroToTeamHandler,
     removeHero: removeHeroFromTeamHandler,
+    teamSummary,
   };
 
   return (

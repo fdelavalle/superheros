@@ -11,21 +11,27 @@ const Home = () => {
     <section>
       <div className='container bg-light p-5 mt-5'>
         <div className='row'>
-          <div className='col-6'>
-            <h1>Say welcome to your team</h1>
-            <p>Find new team members</p>
+          <div className='col-5'>
+            <h1>Your superhero team</h1>
+            <p className='mt-5'>Find new team members</p>
             <div>
               <Input />
             </div>
           </div>
-          <div className='col-6'>
+          <div className='col-7'>
             <TeamStats />
           </div>
           <div className='mt-3'>
             {heros.length > 0 ? (
               <CardGrid inHome={true} herosList={heros} />
             ) : (
-              <p className='mt-5'>You don't have any heros in your team yet</p>
+              <React.Fragment>
+                <h4 className='mt-5 text-center'>Your Team is empty</h4>
+                <p className='text-center'>
+                  Add movies and shows to your Watchlist to keep track of what
+                  you want to watch.
+                </p>
+              </React.Fragment>
             )}
           </div>
         </div>
