@@ -45,20 +45,32 @@ export const getTeamSummary = (team) => {
     }
   });
 
+  const strongestStat = { strongestStat: getStrongesStat(powerstatsSummary) };
+
+  powerstatsSummary.push(strongestStat);
+
   return powerstatsSummary;
 };
 
-const getStrongestStat = (powerstatsSummary) => {};
+const getStrongesStat = (summary) => {
+  const max = summary.reduce(
+    (prev, current) => (prev.value > current.value ? prev : current),
+    1
+  );
+  if (max.value === 0) {
+    max.powerstat = '';
+  }
+
+  return max.powerstat;
+};
 
 export const getWeightAndHeight = (team) => {
-  const stats = { weight: 0, height: 0, strongestStat: '' };
+  const stats = { weight: 0, height: 0 };
 
   team.forEach((hero) => {
     stats.weight += parseInt(hero.appearance.weight[1].replace(' kg', ''));
     stats.height += parseInt(hero.appearance.height[1].replace(' cm', ''));
   });
-
-  stats.strongestStat = getStrongestStat(team);
 
   return stats;
 };

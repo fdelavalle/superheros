@@ -19,7 +19,7 @@ export const TeamMembersContextProvider = (props) => {
   const [badHerosCounter, setBadHerosCounter] = useState(0);
   const [teamFullOfGoodHeros, setTeamFullOfGoodHeros] = useState(false);
   const [teamFullOfBadHeros, setTeamFullOfBadHeros] = useState(false);
-  const [teamSummary, setTeamSummary] = useState({});
+  const [teamSummary, setTeamSummary] = useState([]);
   const [stats, setStats] = useState({});
 
   useEffect(() => {
@@ -40,8 +40,6 @@ export const TeamMembersContextProvider = (props) => {
       }
     }
   }, [goodHerosCounter, badHerosCounter, heros]);
-
-  console.log(stats);
 
   const addHeroToTeamHandler = (hero) => {
     if (hero.biography.alignment === 'good' && teamFullOfGoodHeros) {

@@ -13,7 +13,6 @@ const Home = () => {
         <div className='row'>
           <div className='col-5'>
             <h1>Your superhero team</h1>
-            <p className='mt-5'>Find new team members</p>
             <div>
               <Input />
             </div>
