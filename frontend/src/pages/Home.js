@@ -27,8 +27,8 @@ const Home = () => {
               <React.Fragment>
                 <h4 className='mt-5 text-center'>Your Team is empty</h4>
                 <p className='text-center'>
-                  Add movies and shows to your Watchlist to keep track of what
-                  you want to watch.
+                  Add heroes to your Team to form the best team of superheroes
+                  ever!
                 </p>
               </React.Fragment>
             )}
