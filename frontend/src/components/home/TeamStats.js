@@ -4,54 +4,62 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Radar,
 } from 'recharts';
 import TeamMembersContext from '../../store/teamMembers-context';
 
 const TeamStats = () => {
-  const { teamSummary } = useContext(TeamMembersContext);
+  const { teamSummary, stats, heros } = useContext(TeamMembersContext);
 
   return (
     <div style={{ backgroundColor: '#1a2950' }} className='container rounded'>
       <div className='row pt-5 pb-5'>
         <div className='col'>
-          <ul style={{ color: '#abdbe3' }} className='list-unstyled'>
+          <h4 className='text-white text-center mb-3'>Team</h4>
+          <ul style={{ color: '#f8f9fa' }} className='list-unstyled'>
             <li className='pt-1'>
-              Team Intelligence:{' '}
+              Intelligence:{' '}
               {teamSummary[0] !== undefined ? teamSummary[0].value : 0}
             </li>
             <li className='pt-1'>
-              Team Combat:{' '}
-              {teamSummary[0] !== undefined ? teamSummary[5].value : 0}
+              Combat: {teamSummary[0] !== undefined ? teamSummary[5].value : 0}
             </li>
             <li className='pt-1'>
-              Team Strength:{' '}
+              Strength:{' '}
               {teamSummary[0] !== undefined ? teamSummary[1].value : 0}
             </li>
             <li className='pt-1'>
-              Team Power:{' '}
-              {teamSummary[0] !== undefined ? teamSummary[4].value : 0}
+              Power: {teamSummary[0] !== undefined ? teamSummary[4].value : 0}
             </li>
             <li className='pt-1'>
-              Team Speed:{' '}
-              {teamSummary[0] !== undefined ? teamSummary[2].value : 0}
+              Speed: {teamSummary[0] !== undefined ? teamSummary[2].value : 0}
             </li>
             <li className='pt-1'>
-              Team Durability:{' '}
+              Durability:{' '}
               {teamSummary[0] !== undefined ? teamSummary[3].value : 0}
             </li>
-            <li className='pt-1'>Strongest Powerstat:</li>
-            <li className='pt-1'>Average Weight:</li>
-            <li className='pt-1'>Average Height:</li>
+            <li className='pt-1'>Strongest Powerstat: {heros.strongestStat}</li>
+            <li className='pt-1'>
+              Average Weight:{' '}
+              {heros.length === 0
+                ? 0
+                : (stats.weight / heros.length).toFixed(2)}{' '}
+              kg
+            </li>
+            <li className='pt-1'>
+              Average Height:
+              {heros.length === 0
+                ? 0
+                : (stats.height / heros.length).toFixed(2)}{' '}
+              cm
+            </li>
           </ul>
         </div>
         <div className='col'>
           <ResponsiveContainer width='100%' height='100%'>
             <RadarChart outerRadius={88} cx={140} cy={115} data={teamSummary}>
-              <PolarGrid stroke='#abdbe3' />
-              <PolarAngleAxis dataKey='powerstat' stroke='#abdbe3' />
-              <PolarRadiusAxis angle={30} domain={[0, 150]} stroke='#abdbe3' />
+              <PolarGrid stroke='#f8f9fa' />
+              <PolarAngleAxis dataKey='powerstat' stroke='#f8f9fa' />
               <Radar
                 dataKey='value'
                 stroke='#8884d8'

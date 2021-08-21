@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <section>
-      <div className='container bg-light p-5 mt-5'>
+      <div className='container bg-light rounded p-5 mt-5'>
         <div className='row'>
           <div className='col-5'>
             <h1>Your superhero team</h1>

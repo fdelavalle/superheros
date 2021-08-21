@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { isHeroInTeam, getTeamSummary } from '../helpers/general-helpers';
+import {
+  isHeroInTeam,
+  getTeamSummary,
+  getWeightAndHeight,
+} from '../helpers/general-helpers';
 
 const TeamMembersContext = React.createContext({
   heros: [],
   addHero: (hero) => {},
   removeHero: (id) => {},
   teamSummary: [],
+  stats: {},
 });
 
 export const TeamMembersContextProvider = (props) => {
@@ -15,9 +20,11 @@ export const TeamMembersContextProvider = (props) => {
   const [teamFullOfGoodHeros, setTeamFullOfGoodHeros] = useState(false);
   const [teamFullOfBadHeros, setTeamFullOfBadHeros] = useState(false);
   const [teamSummary, setTeamSummary] = useState({});
+  const [stats, setStats] = useState({});
 
   useEffect(() => {
     setTeamSummary(getTeamSummary(heros));
+    setStats(getWeightAndHeight(heros));
     if (goodHerosCounter === 3) {
       setTeamFullOfGoodHeros(true);
     } else {
@@ -33,6 +40,8 @@ export const TeamMembersContextProvider = (props) => {
       }
     }
   }, [goodHerosCounter, badHerosCounter, heros]);
+
+  console.log(stats);
 
   const addHeroToTeamHandler = (hero) => {
     if (hero.biography.alignment === 'good' && teamFullOfGoodHeros) {
@@ -78,7 +87,8 @@ export const TeamMembersContextProvider = (props) => {
     heros: heros,
     addHero: addHeroToTeamHandler,
     removeHero: removeHeroFromTeamHandler,
-    teamSummary,
+    teamSummary: teamSummary,
+    stats: stats,
   };
 
   return (

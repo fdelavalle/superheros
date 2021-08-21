@@ -47,3 +47,18 @@ export const getTeamSummary = (team) => {
 
   return powerstatsSummary;
 };
+
+const getStrongestStat = (powerstatsSummary) => {};
+
+export const getWeightAndHeight = (team) => {
+  const stats = { weight: 0, height: 0, strongestStat: '' };
+
+  team.forEach((hero) => {
+    stats.weight += parseInt(hero.appearance.weight[1].replace(' kg', ''));
+    stats.height += parseInt(hero.appearance.height[1].replace(' cm', ''));
+  });
+
+  stats.strongestStat = getStrongestStat(team);
+
+  return stats;
+};
