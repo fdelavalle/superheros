@@ -58,7 +58,7 @@ const getStrongesStat = (summary) => {
     1
   );
   if (max.value === 0) {
-    max.powerstat = '';
+    return '';
   }
 
   return max.powerstat;

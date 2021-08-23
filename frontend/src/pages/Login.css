@@ -3,11 +3,18 @@
   background: url('../assets/batman-wallpaper.jpg') left top;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  padding-bottom: 20rem;
 }
 
 .text-gradient {
   background: linear-gradient(to right, #30cfd0 0%, #9a4173 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 576px) {
+  .welcome {
+    padding: 0;
+  }
 }

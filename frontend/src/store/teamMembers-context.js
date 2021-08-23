@@ -41,6 +41,8 @@ export const TeamMembersContextProvider = (props) => {
     }
   }, [goodHerosCounter, badHerosCounter, heros]);
 
+  // console.log(teamSummary);
+
   const addHeroToTeamHandler = (hero) => {
     if (hero.biography.alignment === 'good' && teamFullOfGoodHeros) {
       return;
