@@ -7,6 +7,7 @@ import {
   Radar,
 } from 'recharts';
 import TeamMembersContext from '../../store/teamMembers-context';
+import './TeamStats.css';
 
 const TeamStats = () => {
   const { teamSummary, stats, heros } = useContext(TeamMembersContext);
@@ -15,44 +16,47 @@ const TeamStats = () => {
   data.pop();
 
   return (
-    <div style={{ backgroundColor: '#1a2950' }} className='container rounded'>
+    <div
+      style={{ backgroundColor: '#1a2950' }}
+      className='container rounded team-stats'
+    >
       <div className='row pt-5 pb-5'>
         <div className='col'>
           <h4 className='text-white text-center mb-3'>Team</h4>
           <ul style={{ color: '#f8f9fa' }} className='list-unstyled'>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Intelligence:{' '}
               {teamSummary[0] !== undefined ? teamSummary[0].value : 0}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Combat: {teamSummary[5] !== undefined ? teamSummary[5].value : 0}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Strength:{' '}
               {teamSummary[1] !== undefined ? teamSummary[1].value : 0}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Power: {teamSummary[4] !== undefined ? teamSummary[4].value : 0}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Speed: {teamSummary[2] !== undefined ? teamSummary[2].value : 0}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Durability:{' '}
               {teamSummary[3] !== undefined ? teamSummary[3].value : 0}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Strongest Powerstat:{' '}
               {teamSummary[6] !== undefined ? teamSummary[6].strongestStat : ''}
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Average Weight:{' '}
               {heros.length === 0
                 ? 0
                 : (stats.weight / heros.length).toFixed(2)}{' '}
               kg
             </li>
-            <li className='pt-1'>
+            <li className='pt-1 p-l'>
               Average Height:{' '}
               {heros.length === 0
                 ? 0
@@ -61,7 +65,7 @@ const TeamStats = () => {
             </li>
           </ul>
         </div>
-        <div className='col'>
+        <div className='col radar'>
           <ResponsiveContainer width='100%' height='100%'>
             <RadarChart outerRadius={88} cx={140} cy={115} data={data}>
               <PolarGrid stroke='#f8f9fa' />

@@ -9,15 +9,15 @@ const Home = () => {
 
   return (
     <section>
-      <div className='container bg-light rounded p-5 mt-5'>
+      <div className='container bg-light rounded p-3 mt-5'>
         <div className='row'>
-          <div className='col-5'>
+          <div className='col-lg-5 p-5'>
             <h1>Your superhero team</h1>
             <div>
               <Input />
             </div>
           </div>
-          <div className='col-7'>
+          <div className='col-lg-7 team-stats'>
             <TeamStats />
           </div>
           <div className='mt-3'>
