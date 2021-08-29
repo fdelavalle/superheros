@@ -1,7 +1,6 @@
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .radar {
     display: none;
-    background-color: red;
   }
   .team-stats {
     margin-top: 10px;

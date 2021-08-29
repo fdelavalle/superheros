@@ -34,6 +34,9 @@ const Results = () => {
             <div className='spinner-border text-primary' role='status'></div>
           </div>
         )}
+        {Boolean(herosList.length === 0) && !isLoading && (
+          <p className='text-center pt-5 h1 text-light'>No results found</p>
+        )}
         {Boolean(herosList.length > 0) && !isLoading && (
           <CardGrid herosList={herosList} inHome={false} />
         )}
