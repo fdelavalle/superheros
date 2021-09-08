@@ -1,0 +1,5 @@
+Verificación de usuario autenticado al ingresar a una ruta.
+
+- Validación de campos en submit de formulario de login o búsqueda.
+
+- Manejo de excepciones al obtener errores de la API.
