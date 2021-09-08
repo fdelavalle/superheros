@@ -29,7 +29,8 @@ Run frontend
 ``` 
 ## Demo
 ![Home screenshot]
-(https://raw.githubusercontent.com/fdelavalle/superheros/main/readme-img.png)
+(https://github.com/fdelavalle/superheros/blob/main/readme-img.png)
+
 ###
 (https://raw.githubusercontent.com/fdelavalle/superheros/main/readme-img2.png)
 
