@@ -31,6 +31,6 @@ Run frontend
 ![Home screenshot](https://github.com/fdelavalle/superheros/blob/main/readme-img.png?raw=true)
 
 ###
-(https://raw.githubusercontent.com/fdelavalle/superheros/main/readme-img2.png)
+![Hero modal screenshot](https://raw.githubusercontent.com/fdelavalle/superheros/main/readme-img2.png?raw=true)
 
   
