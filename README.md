@@ -20,7 +20,7 @@ Run frontend
   npm start
 ```
 
-Run frontend
+Run backend
 
 ```bash
   cd backend
