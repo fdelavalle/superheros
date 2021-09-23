@@ -62,7 +62,9 @@ export const TeamMembersContextProvider = (props) => {
       }
 
       const updatedHeros = [...prevHeros];
+
       updatedHeros.push(hero);
+      console.log(updatedHeros);
       return updatedHeros;
     });
   };

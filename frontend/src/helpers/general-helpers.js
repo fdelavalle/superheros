@@ -1,5 +1,5 @@
 export const isHeroInTeam = (enteredHero, team) => {
-  return team.includes(enteredHero);
+  return team.some((hero) => hero.id === enteredHero.id);
 };
 
 export const getTeamSummary = (team) => {
